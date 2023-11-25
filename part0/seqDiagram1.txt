@@ -1,0 +1,31 @@
+// Sequence diagram for exercise 0.4:
+
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: POST http://studies.cs.helsinki.fi/exampleapp/new_note
+    Note right of browser: After form submission, browser makes an HTTP POST request to the above URL
+    
+    server-->>browser: A URL redirect to a new address
+    Note left of server: Responds with a URL redirect to the address /exampleapp/notes
+
+    browser->>server: GET http://studies.cs.helsinki.fi/exampleapp/notes
+    Note right of browser: URL redirect makes the browser reload which causes an HTTP GET request
+
+    server-->>browser: HTML document
+
+    browser->>server: GET http://studies.cs.helsinki.fi/exampleapp/main.css
+    Note right of browser: Link in the HTML document causes browser to fetch CSS file
+
+    server-->>browser: CSS file
+
+    browser->>server: GET http://studies.cs.helsinki.fi/exampleapp/main.js
+    Note right of browser: Link in the HTML document causes browser to fetch JS file
+
+    server-->>browser: Javscript file
+
+    browser->>server: GET http://studies.cs.helsinki.fi/exampleapp/data.json
+    Note right of browser: Javascript code makes browser fecth JSON data
+
+    server-->>browser: JSON data

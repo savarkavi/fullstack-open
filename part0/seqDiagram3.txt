@@ -1,0 +1,11 @@
+// Sequence diagram for exercise 0.6:
+
+sequenceDiagram
+    participant browser
+    participant server
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    Note right of browser: After form sumission, POST request is made to the above URL
+
+    server-->>browser: Responds with 201 status code and JSON
+    Note right of browser: In single page apps, the browser does not get a URL redirect so the page<br/>does not reload, making only one request to the server.
